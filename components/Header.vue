@@ -1,6 +1,13 @@
 <template>
   <div class="main-control">
-    <div class="d-lg-none">ffdfd</div>
+    <div class="d-lg-none lgheader">
+      <img class="logo mr-2" src="../assets/y18.gif" alt="" />
+      <nuxt-link class="logotext" to="/"><b>Hacker News</b></nuxt-link>
+      <nuxt-link class="navtext" to="/">new</nuxt-link
+      >
+      <nuxt-link class="navtext" to="/">past</nuxt-link
+      >
+    </div>
     <div class="d-none d-lg-block">
       <div class="lgheader">
         <div>
@@ -22,7 +29,7 @@
           ><span class="navspe">|</span>
         </div>
         <div>
-          <nuxt-link class="navtext"  to="/">login</nuxt-link>
+          <nuxt-link class="navtext" to="/">login</nuxt-link>
         </div>
       </div>
     </div>
@@ -51,7 +58,7 @@ export default {
     justify-content: space-between;
     padding: 7px 5px;
     .logo {
-          margin-bottom: 4px;
+      margin-bottom: 4px;
     }
     .logotext {
       font-size: 10pt;
