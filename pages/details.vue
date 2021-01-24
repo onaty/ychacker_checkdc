@@ -3,9 +3,10 @@
     <div v-if="isLoading">Is Fetching data</div>
     <div v-if="!isLoading">
       <div v-if="isError">AN Error Occured</div>
-      <div v-if="!isError">
+      <div class="pl-2" v-if="!isError">
+        
         <SingleNewsData
-          :position="22"
+      
           :title="info.title"
           :domain="info.domain"
           :domainlink="info.url"
@@ -18,7 +19,10 @@
           :time_ago="info.time_ago"
           :type="info.type"
         />
-        <br /><br />
+        <br />
+        <h3>All Comments</h3>
+        <br />
+
 
         <div>
           <SingleCommentt
