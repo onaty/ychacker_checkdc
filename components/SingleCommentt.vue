@@ -11,17 +11,16 @@
           <a :href="'https://news.ycombinator.com/user?id=aga_ml'">{{ user }}</a
           >&nbsp;<a href=""> {{ time_ago }}</a>
         </p>
-        <p style="
-    font-size: 13px !important;
-" v-html="content"></p>
+        <p style="font-size: 12px !important" v-html="content"></p>
       </div>
     </div>
- 
-    <div class="d-none d-lg-block"
+
+    <div
+      class="d-none d-lg-block"
       v-if="comments.length > 0"
-      :style="{ paddingLeft: 50 * (level + 1) + 'px' }"
+      :style="{ paddingLeft: 5 * (level + 1) + 'px' }"
     >
-     <!-- <p   v-for="item in comments"
+      <!-- <p   v-for="item in comments"
         :key="item.id+item.user">
         
         
@@ -39,11 +38,12 @@
       />
     </div>
 
-     <div class="dd-lg-none "
+    <div
+      class="dd-lg-none"
       v-if="comments.length > 0"
-      :style="{ paddingLeft:  (level + 5) + 'px' }"
+      :style="{ paddingLeft: level + 5 + 'px' }"
     >
-     <!-- <p   v-for="item in comments"
+      <!-- <p   v-for="item in comments"
         :key="item.id+item.user">
         
         
@@ -64,7 +64,6 @@
 </template>
 <script>
 export default {
-
   name: "SingleCommentt",
   data() {
     return {
@@ -80,9 +79,7 @@ export default {
     content: String,
     comments: Array,
   },
-  mounted() {
-    // console.log(this.comments, this.id,"inners");
-  },
+  mounted() {},
 };
 </script>
 
