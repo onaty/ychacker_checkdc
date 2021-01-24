@@ -1,12 +1,9 @@
 <template>
   <div class="main-control">
-    <div class="d-lg-none lgheader">
+    <div class="d-lg-none smheader">
       <img class="logo mr-2" src="../assets/y18.gif" alt="" />
       <nuxt-link class="logotext" to="/"><b>Hacker News</b></nuxt-link>
-      <nuxt-link class="navtext" to="/">new</nuxt-link
-      >
-      <nuxt-link class="navtext" to="/">past</nuxt-link
-      >
+      
     </div>
     <div class="d-none d-lg-block">
       <div class="lgheader">
@@ -17,7 +14,7 @@
           ><span class="navspe">|</span>
           <nuxt-link class="navtext" to="/">past</nuxt-link
           ><span class="navspe">|</span>
-          <nuxt-link class="navtext" to="/comments">comments</nuxt-link
+          <nuxt-link class="navtext" to="/">comments</nuxt-link
           ><span class="navspe">|</span>
           <nuxt-link class="navtext" to="/">ask</nuxt-link
           ><span class="navspe">|</span>
@@ -41,22 +38,23 @@ export default {
     return {
       mountains: [],
     };
-  },
-  async fetch() {
-    this.mountains = await fetch(
-      "https://api.nuxtjs.dev/mountains"
-    ).then((res) => res.json());
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .main-control {
+
+.smheader{
+   background: #ff6602;
+}
   .lgheader {
     background: #ff6602;
     display: flex !important;
     justify-content: space-between;
     padding: 7px 5px;
+  
+  }
     .logo {
       margin-bottom: 4px;
     }
@@ -76,6 +74,5 @@ export default {
     }
     .navspe {
     }
-  }
 }
 </style>

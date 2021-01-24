@@ -13,7 +13,7 @@ export const mutations = {
 export const actions = {
     async fetchnews({ commit, state }, page) {
 
-        await this.$axios.$get(`http://node-hnapi.herokuapp.com/news??page={1-10}`)
+        await this.$axios.$get(`http://node-hnapi.herokuapp.com/news?page=${page.page}`)
             .then((data) => {
                 commit('updatenews', data)
 

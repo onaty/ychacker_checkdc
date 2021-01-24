@@ -6,6 +6,12 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  components: {
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .homecontrol {
@@ -22,6 +28,7 @@
     .containerholder {
       width: 100%;
       margin-top: 0px;
+      overflow: scroll;
     }
   }
 }

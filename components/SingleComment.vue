@@ -3,50 +3,59 @@
     <div class="info">
       <div class="firstpart mr-2">
         <p class="position">
-          {{ position }}
           <img class="votearrow" src="../assets/grayarrow.gif" alt="" />
         </p>
       </div>
       <div class="secondpart">
-        <p style="margin: 0px">
-          <a :href="domainlink" class="title"> {{ title }}  <span class="domain"> ({{ domain }})</span></a>
-         
-        </p>
         <p class="comments">
-          {{ points }} points by&nbsp;
-          <a target="blank" :href="'https://news.ycombinator.com/user?id='+author">{{
-            author
-          }}</a
-          >&nbsp;<nuxt-link :to="'details?id='+id"> {{time_ago}}</nuxt-link>&nbsp; | &nbsp;
-          <nuxt-link :to="'details?id='+id"
-            >{{ commentscount }}
-            {{ commentscount == 1 ? "comment" : "comments" }}</nuxt-link
-          >
+          <a :href="'https://news.ycombinator.com/user?id=aga_ml'">{{ user }}</a
+          >&nbsp;<a href=""> {{ time_ago }}</a>
         </p>
+        <p v-html="content"></p>
       </div>
+    </div>
+    <div
+      v-if="comments.length > 0"
+      :style="{ paddingLeft: 4 * (level + 1) + 'px' }"
+    >
+     <p
+      v-for="item in comments"
+        :key="item.id"
+     >{{item.id}}</p>
+      <!-- <SingleComment
+        v-for="item in comments"
+        :key="item.id"
+        :id="item.id"
+        :level="item.level"
+        :user="item.user"
+        :time="item.time"
+        :time_ago="item.time_ago"
+        :content="item.content"
+        :comments="item.comments"
+      /> -->
     </div>
   </div>
 </template>
 <script>
 export default {
+     name: "SingleComment", 
   data() {
     return {
       mountains: [],
     };
   },
   props: {
-    position: Number,
-    title: String,
-    domain: String,
-    domainlink: String,
-    author: String,
-    commentscount: Number,
-    points: Number,
     id: Number,
+    level: Number,
+    user: String,
     time: Number,
     time_ago: String,
-    type:String
-  }
+    content: String,
+    comments: Array,
+  },
+  mounted() {
+    console.log(this.comments, this.id);
+  },
 };
 </script>
 
@@ -62,7 +71,7 @@ export default {
         color: #828282;
         margin: 0px;
         margin-top: 2px;
-            white-space: nowrap;
+        white-space: nowrap;
       }
 
       .votearrow {

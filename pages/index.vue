@@ -6,8 +6,9 @@
     <div v-if="!this.$store.state.news.isLoading">
       <div>
         <SingleNewsData
-        v-for="item in this.$store.state.news.allnews" :key="item.id"
-          :position="22"
+          v-for="(item, index) in this.$store.state.news.allnews"
+          :key="item.id"
+          :position="page * 30 + index + 1"
           :title="item.title"
           :domain="item.domain"
           :domainlink="item.url"
@@ -21,6 +22,8 @@
           :type="item.type"
         />
       </div>
+      <br /><br /><br />
+      <button class="btn" @click="fetchapi2(true)">More</button>
     </div>
   </div>
 </template>
@@ -33,12 +36,15 @@ export default {
     };
   },
   mounted() {
-    this.fetchapi2(3);
+    this.fetchapi2();
   },
   methods: {
-    async fetchapi2(page) {
+    async fetchapi2(add) {
       // console.log(this.$store.state,'fdfd');
-      await this.$store.dispatch("news/fetchnews", { page });
+      if (add) {
+        this.page++;
+      }
+      await this.$store.dispatch("news/fetchnews", { page: this.page });
     },
   },
 };
