@@ -1,73 +1,48 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        ychacker
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="">
+    <div v-if="this.$store.state.news.isLoading">
+      <p>Fetching News</p>
+    </div>
+    <div v-if="!this.$store.state.news.isLoading">
+      <div>
+        <SingleNewsData
+        v-for="item in this.$store.state.news.allnews" :key="item.id"
+          :position="22"
+          :title="item.title"
+          :domain="item.domain"
+          :domainlink="item.url"
+          :points="item.points"
+          :author="item.user"
+          :commentscount="item.comments_count"
+          :commentslink="'commentid'"
+          :id="item.id"
+          :time="item.time"
+          :time_ago="item.time_ago"
+          :type="item.type"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data: () => {
+    return {
+      page: 1,
+    };
+  },
+  mounted() {
+    this.fetchapi2(3);
+  },
+  methods: {
+    async fetchapi2(page) {
+      // console.log(this.$store.state,'fdfd');
+      await this.$store.dispatch("news/fetchnews", { page });
+    },
+  },
+};
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
