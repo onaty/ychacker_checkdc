@@ -58,7 +58,7 @@ export default {
     async fetchapi() {
       let id = this.$route.query.id;
       this.$axios
-        .$get("http://node-hnapi.herokuapp.com/item/" + id)
+        .$get("https://node-hnapi.herokuapp.com/item/" + id)
         .then((data) => {
         
           this.info = data;
